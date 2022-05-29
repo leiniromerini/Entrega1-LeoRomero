@@ -32,7 +32,7 @@ def familiares(request):
     familiares_all = Familiares.objects.all()
 
 
-    context = { "familiar_nuevo":familiar_nuevo, "familiar_nuevo2":familiar_nuevo2, "familiar_nuevo3":familiar_nuevo3, "familiares_all":familiares_all}
+    context = { "familiares_all":familiares_all}
     return render(request, "familiares.html", context=context)
 
 
