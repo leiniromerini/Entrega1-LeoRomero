@@ -26,12 +26,11 @@ Listar Herramientas
         {% endif %}
         <div class="card-body">
         <h5 class="card-title">{{producto.name}}</h5>
-        <p class="card-text">{{producto.price}}</p>
-        <p class="card-text">{{producto.description}}</p>
-        <p class="card-text">{{producto.SKU}}</p>
-        <p class="card-text">{{producto.available}}</p>
-        <p class="card-text">{{producto.energia}}</p>
-        <p class="card-text">{{producto.clase}}</p>
+        <p class="card-text">precio: ${{producto.price}}</p>
+        <p class="card-text">Descripcion: {{producto.description}}</p>
+        <p class="card-text">Disponibilidad: {{producto.available}}</p>
+        <p class="card-text">Energia: {{producto.energia}}</p>
+        <p class="card-text">Clase :{{producto.clase}}</p>
         <a href="#" class="btn btn-primary">Comprar</a> <!-- Acan el el Href habria que agregar un url de carrito de compra por ej -->
         </div>
     </div>

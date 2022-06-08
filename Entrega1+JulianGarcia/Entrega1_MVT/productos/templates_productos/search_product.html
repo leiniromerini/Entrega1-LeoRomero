@@ -15,10 +15,10 @@ Buscar Productos All
         {% endif %}
         <div class="card-body">
         <h5 class="card-title">{{producto.name}}</h5>
-        <p class="card-text">{{producto.price}}</p>
-        <p class="card-text">{{producto.description}}</p>
-        <p class="card-text">{{producto.SKU}}</p>
-        <p class="card-text">{{producto.available}}</p>
+        <p class="card-text">Preio: ${{producto.price}}</p>
+        <p class="card-text">Descripcion: {{producto.description}}</p>
+        <p class="card-text">SKU: {{producto.SKU}}</p>
+        <p class="card-text">Disponibilidad: {{producto.available}}</p>
         <a href="#" class="btn btn-primary">Comprar</a> <!-- Acan el el Href habria que agregar un url de carrito de compra por ej -->
         </div>
     </div>
