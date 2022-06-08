@@ -14,7 +14,27 @@ class Productos(models.Model):
     available = models.BooleanField(default=True) # ----------------- Aca le digo que por default esta disponible
     imagen = models.ImageField(upload_to="productos_imagenes", null=True)
     class Meta:
+        #abstract = True
         verbose_name= "producto"                      # nombre para el portal de admin en single el otro en plural
         verbose_name_plural = "productos"
+
+
+
+class Productos_herramientas(Productos):
+    energia = models.CharField(max_length=30,blank=True, null=True)
+    clase = models.CharField(max_length=30,blank=True, null=True)
+
+
+class Productos_muebles(Productos):
+    tipo = models.CharField(max_length=30,blank=True, null=True)
+    capacidad = models.CharField(max_length=30,blank=True, null=True)
+
+
+class Contacto(models.Model):
+    nombre = models.CharField(max_length=30)
+    apellido = models.CharField(max_length=30)
+    email = models.CharField(max_length=30)
+
+
 
 

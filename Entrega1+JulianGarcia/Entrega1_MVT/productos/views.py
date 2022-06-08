@@ -3,7 +3,7 @@ from multiprocessing import context
 from unicodedata import name
 from xml.dom.minidom import Document
 from django.shortcuts import render
-from productos.models import Productos
+from productos.models import Productos, Productos_herramientas, Productos_muebles, Contacto
 from productos.forms import Product_form    # Aca importo el formulario 
 
 # Create your views here.
@@ -52,3 +52,55 @@ def search_product(request):
     context = {"search_products":search_products}
 
     return render(request, "search_product.html", context=context)   
+
+
+
+##################################  / Herramientas ###############################    
+
+def listar_herramientas(request):
+
+    herramientas_all = Productos_herramientas.objects.all()    
+    context = {"herramientas_all":herramientas_all}
+
+    return render(request, "listar_herramientas.html", context = context)
+
+
+
+def search_herramientas(request):
+    print(request.GET) # ACA LACE PRINT DEL GET QUE LLEGA 
+    #product = Productos.objects.get --- Busca de a una coincidencia
+    search_products = Productos_herramientas.objects.filter(name__contains = request.GET["search"])  # comando para las busquedas es asi no lo pienses mucho 
+
+    context = {"search_products":search_products}
+
+    return render(request, "search_herramientas.html", context=context)   
+
+
+
+
+
+
+
+######################## / Muebles ######################################### 
+
+
+def listar_muebles(request):
+
+    muebles_all = Productos_muebles.objects.all()    
+    context = {"muebles_all":muebles_all}
+
+    return render(request, "listar_muebles.html", context = context)
+
+
+
+
+def search_muebles(request):
+    print(request.GET) # ACA LACE PRINT DEL GET QUE LLEGA 
+    #product = Productos.objects.get --- Busca de a una coincidencia
+    search_products = Productos_muebles.objects.filter(name__contains = request.GET["search"])  # comando para las busquedas es asi no lo pienses mucho 
+
+    context = {"search_products":search_products}
+
+    return render(request, "search_muebles.html", context=context)   
+
+

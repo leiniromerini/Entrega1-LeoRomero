@@ -39,24 +39,24 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-expanded="false">
-                        Dropdown
+                        Clases de Productos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="/productos/herramientas/listar_herramientas/">Herramientas</a>
+                        <a class="dropdown-item" href="/productos/muebles/listar_muebles/">Muebles</a>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled">Disabled</a>
                 </li>
             </ul>
+            {% block busqueda %}
             </form> <!-- Busqueda -->
             <form class="form-inline my-2 my-lg-0" action="/productos/buscar_productos/" method="GET">
-                <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search" name='search'>
+                <input class="form-control mr-sm-2" type="text" placeholder="Buscar Todas Categorias" aria-label="Search" name='search'>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
             </form>
+            {% endblock %}
         </div>
     </nav>
     {% block contenido %}
