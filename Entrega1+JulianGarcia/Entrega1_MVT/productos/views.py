@@ -10,7 +10,9 @@ from productos.forms import Product_form, Herramientas_form, Muebles_form    # A
 # Create your views here.
 
 
-# Plantilla para mandar todo al HTML productos ( listar_productos.html)
+
+
+# Products all listar_productos.html 
 
 def productos_all(request):
 
