@@ -32,8 +32,8 @@ def contacto(request):
             new_contact = Contacto.objects.create(
             nombre = form.cleaned_data['nombre'],
             apellido = form.cleaned_data['apellido'],
-            email = form.cleaned_data['emial'],
+            email = form.cleaned_data['email'],
             )
-            context = {"new_product":new_contact}
+            context = {"new_contact":new_contact}
 
         return render(request, "create_contact.html", context=context)  
