@@ -12,7 +12,8 @@
 
 
 
-{% block contenido %}  
+{% block contenido %}
+{%if search_products%}  
 <div class="d-flex" style="margin-top:5rem ; margin-left: 7rem">
     {% for producto in search_products%}
     <div class="card" style="width: 18rem;">
@@ -32,4 +33,11 @@
     </div>
     {% endfor %}
 </div>
+{%else%} 
+<div style = "color:black">
+    <h1>{{errors}}</h1> 
+<div>
+{%endif%} 
+
+
 {% endblock %}

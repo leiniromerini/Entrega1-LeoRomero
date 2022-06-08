@@ -1,3 +1,4 @@
+from genericpath import exists
 from itertools import product
 from multiprocessing import context
 from unicodedata import name
@@ -46,12 +47,12 @@ def create_product(request):
 
 def search_product(request):
     print(request.GET) # ACA LACE PRINT DEL GET QUE LLEGA 
-    #product = Productos.objects.get --- Busca de a una coincidencia
-    search_products = Productos.objects.filter(name__contains = request.GET["search"])  # comando para las busquedas es asi no lo pienses mucho 
-
-    context = {"search_products":search_products}
-
-    return render(request, "search_product.html", context=context)   
+    search_products = Productos.objects.filter(name__contains = request.GET["search"])
+    if search_products.exists():
+        context = {"search_products":search_products}
+    else:
+        context = {'errors': f'Disculpe, no se encontro el producto deseado'} 
+    return render(request, 'search_product.html', context = context)    
 
 
 
@@ -70,10 +71,11 @@ def search_herramientas(request):
     print(request.GET) # ACA LACE PRINT DEL GET QUE LLEGA 
     #product = Productos.objects.get --- Busca de a una coincidencia
     search_products = Productos_herramientas.objects.filter(name__contains = request.GET["search"])  # comando para las busquedas es asi no lo pienses mucho 
-
-    context = {"search_products":search_products}
-
-    return render(request, "search_herramientas.html", context=context)   
+    if search_products.exists():
+        context = {"search_products":search_products}
+    else:
+        context = {'errors': f'Disculpe, no se encontro la herramienta deseada'} 
+    return render(request, 'search_herramientas.html', context = context)  
 
 
 
@@ -122,10 +124,11 @@ def search_muebles(request):
     print(request.GET) # ACA LACE PRINT DEL GET QUE LLEGA 
     #product = Productos.objects.get --- Busca de a una coincidencia
     search_products = Productos_muebles.objects.filter(name__contains = request.GET["search"])  # comando para las busquedas es asi no lo pienses mucho 
-
-    context = {"search_products":search_products}
-
-    return render(request, "search_muebles.html", context=context)   
+    if search_products.exists():
+        context = {"search_products":search_products}
+    else:
+        context = {'errors': f'Disculpe, no se encontro el mueble deseado'} 
+    return render(request, 'search_muebles.html', context = context)    
 
 
 
