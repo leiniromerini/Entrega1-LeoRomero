@@ -128,3 +128,24 @@ def search_muebles(request):
     return render(request, "search_muebles.html", context=context)   
 
 
+
+def create_muebles(request):
+    if request.method == "GET":
+        form = Muebles_form()
+        context = {"form":form}
+        return render(request, "create_muebles.html", context=context)
+    else:
+        form = Muebles_form(request.POST, request.FILES) # LA concha de la lora aaca poner request.FILES para la imagen 
+        if form.is_valid():
+            new_product = Productos_muebles.objects.create(
+                name = form.cleaned_data['name'],
+                price = form.cleaned_data['price'],
+                description = form.cleaned_data['description'],
+                SKU = form.cleaned_data['SKU'],
+                available = form.cleaned_data['available'],
+                imagen = form.cleaned_data['imagen'],
+                tipo = form.cleaned_data['tipo'],
+                capacidad = form.cleaned_data['capacidad'],
+            )
+            context = {"new_product":new_product}
+        return render(request, "create_muebles.html", context=context)    
