@@ -1,0 +1,40 @@
+
+{% block titulo %}      
+Contacto
+
+{% endblock %}
+
+
+{% block contenido %}          
+
+{% if form %}
+    
+
+    <form action="" method="POST" enctype="multipart/form-data">   <!--  Aca si viene por post hace-->
+        {% csrf_token %}               <!-- token va siempre-->
+        <table>                     <!-- hace que lo muestre como tabla-->
+            {{form.as_table}}        <!-- muestra el formulario que creamos -->
+        </table>
+        <input type="submit", value="Enviar!">   <!-- el boton para enviar -->
+    </form>                         <!-- cierra el form-->
+    {% elif new_contact %}                                            <!-- aca un elif si existe el new_product que hicimos en la view-->
+    Se Creo el Nuevo contacto :
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{new_contact.nomnre}}</h5>
+            <p class="card-text">{{new_contact.apellido}}</p>
+            <p class="card-text">{{new_contact.email}}</p>
+        </div>
+    </div>   
+
+
+
+{% endif %}
+
+
+
+
+
+
+
+{% endblock %}

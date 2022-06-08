@@ -15,14 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from Entrega1_MVT.views import ofertas
+from Entrega1_MVT.views import ofertas, contacto
 from django.conf import settings # importo para lo de media 
 from django.conf.urls.static import static # para imagenes 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", ofertas , name= "index" ),   # - Pagina de inicio
-    path("productos/", include("productos.urls")),   #- Subdirectorio Productos
+    path("productos/", include("productos.urls")), #- Subdirectorio Productos
+    path("contacto/", contacto , name= "contacto" ),
 
 ]
 

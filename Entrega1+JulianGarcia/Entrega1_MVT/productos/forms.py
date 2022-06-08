@@ -1,6 +1,7 @@
 from dataclasses import fields
+from msilib.schema import Class
 from django import forms   #Aca importo los formularios de django 
-from productos.models import Productos, Productos_herramientas, Productos_muebles  # Aca importo el modelo Productos para usarlo  caundo creo la cass form 
+from productos.models import Productos, Productos_herramientas, Productos_muebles, Contacto  # Aca importo el modelo Productos para usarlo  caundo creo la cass form 
 
 
 
@@ -24,4 +25,10 @@ class Herramientas_form(forms.ModelForm):
 class Muebles_form(forms.ModelForm):
     class Meta:
         model = Productos_muebles
+        fields = '__all__'
+
+
+class Contacto_form(forms.ModelForm):
+    class Meta:
+        model = Contacto
         fields = '__all__'
