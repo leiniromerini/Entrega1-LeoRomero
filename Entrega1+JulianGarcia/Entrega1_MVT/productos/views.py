@@ -4,12 +4,12 @@ from unicodedata import name
 from xml.dom.minidom import Document
 from django.shortcuts import render
 from productos.models import Productos, Productos_herramientas, Productos_muebles, Contacto
-from productos.forms import Product_form    # Aca importo el formulario 
+from productos.forms import Product_form, Herramientas_form, Muebles_form    # Aca importo el formulario 
 
 # Create your views here.
 
 
-# Plantilla para mandar todo al HTML productos ( productos.html)
+# Plantilla para mandar todo al HTML productos ( listar_productos.html)
 
 def productos_all(request):
 
@@ -74,6 +74,30 @@ def search_herramientas(request):
     context = {"search_products":search_products}
 
     return render(request, "search_herramientas.html", context=context)   
+
+
+
+def create_herramientas(request):
+    if request.method == "GET":
+        form = Herramientas_form()
+        context = {"form":form}
+        return render(request, "create_herramientas.html", context=context)
+    else:
+        form = Herramientas_form(request.POST, request.FILES) # LA concha de la lora aaca poner request.FILES para la imagen 
+        if form.is_valid():
+            new_product = Productos_herramientas.objects.create(
+                name = form.cleaned_data['name'],
+                price = form.cleaned_data['price'],
+                description = form.cleaned_data['description'],
+                SKU = form.cleaned_data['SKU'],
+                available = form.cleaned_data['available'],
+                imagen = form.cleaned_data['imagen'],
+                energia = form.cleaned_data['energia'],
+                clase = form.cleaned_data['clase'],
+            )
+            context = {"new_product":new_product}
+        return render(request, "create_herramientas.html", context=context)    
+
 
 
 
