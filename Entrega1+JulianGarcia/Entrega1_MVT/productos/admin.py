@@ -3,7 +3,7 @@ from productos.models import Productos, Productos_herramientas, Productos_mueble
 
 # Register your models here.
 
-#admin.site.register(Productos)
+admin.site.register(Productos)
 admin.site.register(Productos_herramientas)    
 admin.site.register(Productos_muebles)
 admin.site.register(Contacto)  
